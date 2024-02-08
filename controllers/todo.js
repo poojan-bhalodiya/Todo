@@ -28,6 +28,8 @@ const createTodo = (req, res) => {
       res.status(400).send(err);
     });
 };
+
+//update Todo
 const updateTodo = (req, res) => {
   Todo.findOneAndUpdate(
     { _id: req.params.todoID },
@@ -48,9 +50,9 @@ const updateTodo = (req, res) => {
     });
 };
 
-//Delete TODO
+// Delete TODO
 const deleteTodo = (req, res) => {
-  Directory.findByIdAndDelete(req.params.ID)
+  Todo.findByIdAndDelete(req.params.ID)
     .then((deletedTodo) => {
       if (!deletedTodo) {
         return res.status(404).json({ error: "Todo not found." });
